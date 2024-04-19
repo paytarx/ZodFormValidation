@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { FaCheck } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
 import Zod2 from './Zod2';
+import HookForm from './HookForm';
 
 const Zod = () => {
     const userSchema = z.object({
@@ -58,7 +59,8 @@ const Zod = () => {
 
         return (
             <div>
-                <form>
+                <form className='border-2 border-black p-8'>
+                    <div className='flex'>
                     <input
                     className='border-2 border-cyan-300 rounded-xl p-2 m-2'
                         type='text'
@@ -67,7 +69,14 @@ const Zod = () => {
                         onChange={handleChange}
                         placeholder='Username'
                     />
-                    <input
+                     {
+                        formState.username.length > 3 ? <p className='flex bg-green-500 text-white my-2 h-12 font-semibold p-2 px-2 
+                        w-48 rounded-xl duration-500'> Username is valid <span className='justify-center my-auto mx-4'> <FaCheck /> </span> </p>:(
+                        <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 my-2 h-12 rounded-xl duration-500'>Username is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
+                    }
+                    </div>
+                   <div className='flex'>
+                   <input
                     className='border-2 border-cyan-300 rounded-xl p-2 m-2'
                         type='email'
                         name='email'
@@ -75,6 +84,13 @@ const Zod = () => {
                         onChange={handleChange}
                         placeholder='Email'
                     />
+                    
+                    {
+                        formState.email.includes(".com") ? <p className='flex bg-green-500 text-white my-2 font-semibold p-2 px-2 h-12 w-48 rounded-xl duration-500'>Email is valid <span className='justify-center my-auto mx-4'> <FaCheck /> </span> </p>: (
+                            <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 my-2 h-12 rounded-xl duration-500'>Email is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
+                    }
+                   </div>
+                    <div className='flex'>
                     <input
                     className='border-2 border-cyan-300 rounded-xl p-2 m-2'
                     type='password'
@@ -84,30 +100,26 @@ const Zod = () => {
                     placeholder='Password 8 - 20'
                     >
                     </input>
+                    {
+                        formState.password.length > 8 && formState.password.length < 20 ? <p className='flex my-2 h-12 bg-green-500 text-white font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Password is valid <span className='justify-center my-auto mx-4'> <FaCheck /> </span> </p>: (
+                            <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 my-2 h-12 rounded-xl duration-500'>Password is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
+                    }
+                    </div>
+                    
                     <button
                         onClick={handleSubmit}
-                        className='p-2 bg-cyan-300 rounded-xl hover:scale-125 active:scale-110'
+                        className='p-2 mx-2 bg-cyan-300 rounded-xl hover:scale-125 active:scale-110'
                         type='submit'
                     >
                         Submit
                     </button>
                 </form>
                 <div className='flex flex-col gap-4 mt-4 m-2'>
-                    {
-                        formState.username.length > 3 ? <p className='flex bg-green-500 text-white font-semibold p-2 px-2 
-                        w-48 rounded-xl duration-500'> Username is valid <span className='justify-center my-auto mx-4'> <FaCheck /> </span> </p>:(
-                        <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Username is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
-                    }
-                    {
-                        formState.email.includes(".com") ? <p className='flex bg-green-500 text-white font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Email is valid <span className='justify-center my-auto mx-4'> <FaCheck /> </span> </p>: (
-                            <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Email is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
-                    }
-                    {
-                        formState.password.length > 8 && formState.password.length < 20 ? <p className='flex bg-green-500 text-white font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Password is valid <span className='justify-center my-auto mx-4'> <FaCheck /> </span> </p>: (
-                            <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Password is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
-                    }
+                   
+                    
                 </div>
                 <Zod2 onFormState={formState} onHandleChange={handleChange} onHandleSubmit={handleSubmit} userSchema={userSchema} />
+                <HookForm handleSubmit = {handleSubmit} />
             </div>
         );
     };
