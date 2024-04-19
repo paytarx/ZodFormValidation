@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import { z } from 'zod';
 import { FaCheck } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
+import Zod2 from './Zod2';
 
 const Zod = () => {
     const userSchema = z.object({
         username: z.string().min(3),
         email: z.string().email().regex(/\.com$/),
         password : z.string().min(8).max(20),
+        name: z.string().min(3),
+        age: z.number().int().positive(),
+        city: z.string().min(3),
     });
 
     const myForm = () => {
@@ -15,6 +19,9 @@ const Zod = () => {
             username: "",
             email: "",
             password: "",
+            name: "",
+            age: "",
+            city: "",
         });
 
         const handleChange = (e) => {
@@ -100,6 +107,7 @@ const Zod = () => {
                             <p className='flex text-white bg-red-500 font-semibold p-2 px-2 w-48 rounded-xl duration-500'>Password is invalid <span className='justify-center my-auto mx-2'> <FaTimes /> </span> </p>)
                     }
                 </div>
+                <Zod2 onFormState={formState} onHandleChange={handleChange} onHandleSubmit={handleSubmit} userSchema={userSchema} />
             </div>
         );
     };
