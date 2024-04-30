@@ -1,0 +1,68 @@
+{
+  "employees": [
+    {
+      "name": "John",
+      "age": 30,
+      "city": "New York"
+    },
+    {
+      "name": "Jane",
+      "age": 25,
+      "city": "Los Angeles"
+    },
+    {
+      "name": "Jim",
+      "age": 35,
+      "city": "Chicago"
+    },
+    {
+      "name": "John",
+      "age": 30,
+      "city": "New York"
+    },
+    {
+      "name": "Jane",
+      "age": 25,
+      "city": "Los Angeles"
+    },
+    {
+      "id": "2cf9",
+      "items": [
+        {
+          "name": "asdads"
+        }
+      ]
+    },
+    {
+      "id": "aad9",
+      "items": [
+        {
+          "name": "paytar"
+        }
+      ]
+    },
+    {
+      "id": "9508",
+      "items": [
+        {
+          "name": "paytar",
+          "age": "24"
+        }
+      ]
+    },
+    {
+      "id": "7163",
+      "items": [
+        {
+          "name": "oğuz",
+          "age": "24",
+          "email": "oz.556@gmail.com",
+          "phone": "054545454545",
+          "address": "asd asd ad aw qrqw rqwdsad dsadasdsadas d asd13413 : 12 12",
+          "city": "new jersey",
+          "state": "middle east"
+        }
+      ]
+    }
+  ]
+}

@@ -5,6 +5,7 @@ import { FaTimes } from "react-icons/fa";
 import Zod2 from './Zod2';
 import HookForm from './HookForm';
 import Hookform2 from './Hookform2';
+import Hookform3 from './Hookform3';
 
 const Zod = () => {
     const userSchema = z.object({
@@ -119,6 +120,7 @@ const Zod = () => {
                    
                     
                 </div>
+                <Hookform3 />
                 {/* <Zod2 onFormState={formState} onHandleChange={handleChange} onHandleSubmit={handleSubmit} userSchema={userSchema} /> */}
                 <HookForm />
                 <Hookform2 />
